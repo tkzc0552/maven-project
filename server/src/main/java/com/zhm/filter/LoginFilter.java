@@ -83,7 +83,7 @@ public class LoginFilter implements Filter {
         logger.info("servletPath : " + servletPath);
 
         //如果是登录页面则不需要拦截
-        if(servletPath.contains("/api/login")){
+        if(servletPath.contains("/login")){
             chain.doFilter(request, response);
             return;
         }
@@ -113,7 +113,7 @@ public class LoginFilter implements Filter {
         /**
          * 配置一些页面参数不需要过滤器处理
          */
-        String excludedPatterns = environment.getProperty("mfw.authority.default.excluded_patterns");
+        String excludedPatterns = environment.getProperty("mptest.authority.default.excluded_patterns");
         String[] excludedPatternsArray = StringUtils.split(excludedPatterns, ",");
 
         PathMatcher matcher = new AntPathMatcher();
@@ -126,14 +126,14 @@ public class LoginFilter implements Filter {
         }
 
 
-        String cookieName=environment.getProperty("mfw.authority.default.cookieName");
+        String cookieName=environment.getProperty("mptst.authority.default.cookieName");
 
         //登录页面
         //判断cookieName是否配置
         if(cookieName!=null){
             Cookie cookie= WebUtils.getCookie(httpServletRequest,cookieName);
             if(cookie!=null){
-                String redisName=environment.getProperty("mfw.redis.user.info")+cookie.getValue();
+                String redisName=environment.getProperty("mptst.redis.user.info")+cookie.getValue();
                 logger.info("redis中key值是："+redisName);
                 //获取Redis中用户信息
                 String userInfo=rt.opsForValue().get(redisName);

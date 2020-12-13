@@ -3,21 +3,16 @@
 <mapper namespace="com.zhm.template.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.zhm.template.entity.SysUser">
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="avatar_img" jdbcType="VARCHAR" property="avatarImg" />
-    <result column="client_id" jdbcType="VARCHAR" property="clientId" />
-    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
-    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_user" jdbcType="INTEGER" property="updateUser" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, user_name, pass_word, sex, email, mobile, address, status, avatar_img, client_id, 
-    dept_id, create_user, create_time, update_user, update_time, delete_flag
+    user_id, account, pass_word, user_name, telephone, status, create_user, create_time, 
+    update_user, update_time, delete_flag
   </sql>
   <select id="selectByExample" parameterType="com.zhm.template.entity.SysUserExample" resultMap="BaseResultMap">
     select
@@ -102,18 +97,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.zhm.template.entity.SysUser">
-    insert into sys_user (user_id, user_name, pass_word, 
-      sex, email, mobile, 
-      address, status, avatar_img, 
-      client_id, dept_id, create_user, 
-      create_time, update_user, update_time, 
-      delete_flag)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{avatarImg,jdbcType=VARCHAR}, 
-      #{clientId,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{createUser,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleteFlag,jdbcType=TINYINT})
+    insert into sys_user (user_id, account, pass_word, 
+      user_name, telephone, status, 
+      create_user, create_time, update_user, 
+      update_time, delete_flag)
+    values (#{userId,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zhm.template.entity.SysUser">
     insert into sys_user
@@ -121,35 +112,20 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="userName != null">
-        user_name,
+      <if test="account != null">
+        account,
       </if>
       <if test="passWord != null">
         pass_word,
       </if>
-      <if test="sex != null">
-        sex,
+      <if test="userName != null">
+        user_name,
       </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="mobile != null">
-        mobile,
-      </if>
-      <if test="address != null">
-        address,
+      <if test="telephone != null">
+        telephone,
       </if>
       <if test="status != null">
         status,
-      </if>
-      <if test="avatarImg != null">
-        avatar_img,
-      </if>
-      <if test="clientId != null">
-        client_id,
-      </if>
-      <if test="deptId != null">
-        dept_id,
       </if>
       <if test="createUser != null">
         create_user,
@@ -171,50 +147,35 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
       </if>
       <if test="passWord != null">
         #{passWord,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        #{sex,jdbcType=INTEGER},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="avatarImg != null">
-        #{avatarImg,jdbcType=VARCHAR},
-      </if>
-      <if test="clientId != null">
-        #{clientId,jdbcType=VARCHAR},
-      </if>
-      <if test="deptId != null">
-        #{deptId,jdbcType=INTEGER},
+        #{status,jdbcType=VARCHAR},
       </if>
       <if test="createUser != null">
-        #{createUser,jdbcType=VARCHAR},
+        #{createUser,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateUser != null">
-        #{updateUser,jdbcType=VARCHAR},
+        #{updateUser,jdbcType=INTEGER},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="deleteFlag != null">
-        #{deleteFlag,jdbcType=TINYINT},
+        #{deleteFlag,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -230,50 +191,35 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.userName != null">
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
       </if>
       <if test="record.passWord != null">
         pass_word = #{record.passWord,jdbcType=VARCHAR},
       </if>
-      <if test="record.sex != null">
-        sex = #{record.sex,jdbcType=INTEGER},
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
-      </if>
-      <if test="record.mobile != null">
-        mobile = #{record.mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.avatarImg != null">
-        avatar_img = #{record.avatarImg,jdbcType=VARCHAR},
-      </if>
-      <if test="record.clientId != null">
-        client_id = #{record.clientId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.deptId != null">
-        dept_id = #{record.deptId,jdbcType=INTEGER},
+        status = #{record.status,jdbcType=VARCHAR},
       </if>
       <if test="record.createUser != null">
-        create_user = #{record.createUser,jdbcType=VARCHAR},
+        create_user = #{record.createUser,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateUser != null">
-        update_user = #{record.updateUser,jdbcType=VARCHAR},
+        update_user = #{record.updateUser,jdbcType=INTEGER},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.deleteFlag != null">
-        delete_flag = #{record.deleteFlag,jdbcType=TINYINT},
+        delete_flag = #{record.deleteFlag,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -283,23 +229,19 @@
   <update id="updateByExample" parameterType="map">
     update sys_user
     set user_id = #{record.userId,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
       pass_word = #{record.passWord,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=INTEGER},
-      email = #{record.email,jdbcType=VARCHAR},
-      mobile = #{record.mobile,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      avatar_img = #{record.avatarImg,jdbcType=VARCHAR},
-      client_id = #{record.clientId,jdbcType=VARCHAR},
-      dept_id = #{record.deptId,jdbcType=INTEGER},
-      create_user = #{record.createUser,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      delete_flag = #{record.deleteFlag,jdbcType=TINYINT}
+      delete_flag = #{record.deleteFlag,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
 </mapper>

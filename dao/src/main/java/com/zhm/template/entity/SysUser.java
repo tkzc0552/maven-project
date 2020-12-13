@@ -6,35 +6,25 @@ import java.util.Date;
 public class SysUser implements Serializable {
     private Integer userId;
 
-    private String userName;
+    private String account;
 
     private String passWord;
 
-    private Integer sex;
+    private String userName;
 
-    private String email;
+    private String telephone;
 
-    private String mobile;
+    private String status;
 
-    private String address;
-
-    private Integer status;
-
-    private String avatarImg;
-
-    private String clientId;
-
-    private Integer deptId;
-
-    private String createUser;
+    private Integer createUser;
 
     private Date createTime;
 
-    private String updateUser;
+    private Integer updateUser;
 
     private Date updateTime;
 
-    private Byte deleteFlag;
+    private Integer deleteFlag;
 
     private static final long serialVersionUID = 1L;
 
@@ -46,12 +36,12 @@ public class SysUser implements Serializable {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setAccount(String account) {
+        this.account = account == null ? null : account.trim();
     }
 
     public String getPassWord() {
@@ -62,76 +52,36 @@ public class SysUser implements Serializable {
         this.passWord = passWord == null ? null : passWord.trim();
     }
 
-    public Integer getSex() {
-        return sex;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getEmail() {
-        return email;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setTelephone(String telephone) {
+        this.telephone = telephone == null ? null : telephone.trim();
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
-    public String getAvatarImg() {
-        return avatarImg;
-    }
-
-    public void setAvatarImg(String avatarImg) {
-        this.avatarImg = avatarImg == null ? null : avatarImg.trim();
-    }
-
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId == null ? null : clientId.trim();
-    }
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    public String getCreateUser() {
+    public Integer getCreateUser() {
         return createUser;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser == null ? null : createUser.trim();
+    public void setCreateUser(Integer createUser) {
+        this.createUser = createUser;
     }
 
     public Date getCreateTime() {
@@ -142,12 +92,12 @@ public class SysUser implements Serializable {
         this.createTime = createTime;
     }
 
-    public String getUpdateUser() {
+    public Integer getUpdateUser() {
         return updateUser;
     }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser == null ? null : updateUser.trim();
+    public void setUpdateUser(Integer updateUser) {
+        this.updateUser = updateUser;
     }
 
     public Date getUpdateTime() {
@@ -158,11 +108,11 @@ public class SysUser implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Byte getDeleteFlag() {
+    public Integer getDeleteFlag() {
         return deleteFlag;
     }
 
-    public void setDeleteFlag(Byte deleteFlag) {
+    public void setDeleteFlag(Integer deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
 }
